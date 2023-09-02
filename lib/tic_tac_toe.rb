@@ -100,8 +100,3 @@ class Game
   
   
 end
-
-
-
-# start game
-Game.new
