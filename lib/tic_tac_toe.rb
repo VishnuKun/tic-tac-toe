@@ -6,4 +6,7 @@ class Tic_Tac_Toe
   def initialize
     @board = Array.new(9) { |i| i + 1} 
   end
+
+  def game_over?(board)
+  end
 end
