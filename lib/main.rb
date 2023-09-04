@@ -1,3 +1,6 @@
-require 'tic_tac_toe'
+# frozen_string_literal: true
 
-game = Game.new
+require_relative 'tic_tac_toe'
+# uncomment the lines below to to play in the terminal
+# game = Tic_Tac_Toe.new
+# game.play_game
