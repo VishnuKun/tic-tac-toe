@@ -7,8 +7,8 @@ require './lib/tic_tac_toe'
 describe Tic_Tac_Toe do
   
   describe '#game_over?' do
-    context 'when board reads X X X across the top row'
     subject(:game) { described_class.new }
+    context 'when board reads X X X across the top row'
     it 'should return true' do
       board =       board = [['X', 'X', 'X'], ['O', 'O', ' '], [' ', ' ', ' ']]
       solution = game.game_over?(board)
@@ -16,7 +16,6 @@ describe Tic_Tac_Toe do
     end
 
     context 'when board reads X X X diagonally(from left to right)' do
-      subject(:game) { described_class.new }
       it 'should return true' do
         board =       board = ['X', ' ', ' ',   'O', 'X', ' ',    ' ', ' ', 'X']
         solution = game.game_over?(board)
@@ -25,7 +24,6 @@ describe Tic_Tac_Toe do
     end
 
     context 'when board reads X X X across the middle column' do
-      subject(:game) { described_class.new }
       it 'should return true' do
         board =       board = ['0', 'X', 'X',   'O', 'X', 'O',    ' ', 'X', ' ']
         solution = game.game_over?(board)
@@ -34,7 +32,6 @@ describe Tic_Tac_Toe do
     end
     
     context 'when board is filled with no winning match' do
-      subject(:game) { described_class.new }
       it 'should return false for draw' do
         board =       board = ['O', 'X', 'X',   'X', 'X', 'O',    'O', 'O', 'X']
         solution = game.game_over?(board)
@@ -49,8 +46,8 @@ describe Tic_Tac_Toe do
   # critical methods -
 
   describe '#place_mark' do
+    subject(:game) { described_class.new }
     context 'when given message to mark on center' do 
-      subject(:game) { described_class.new }
       it 'should mark on boards center' do
         expect(result).to eq('X')
       end
@@ -58,8 +55,29 @@ describe Tic_Tac_Toe do
   end
 
   describe '#display_board' do
+    subject(:game_input) { described_class.new }
     context 'when given message' do 
+      before do 
+        solution = "
+        1 | 2 | 3
+        ---------
+        4 | 5 | 6
+        ---------
+        7 | 8 | 9
+        ";
+        allow(game_input).to receive(:display_board).and_return(solution)
+      end
+
       it 'should display the board' do
+        solution = "
+        1 | 2 | 3
+        ---------
+        4 | 5 | 6
+        ---------
+        7 | 8 | 9
+        ";
+        expect(game_input).to receive(:puts).with(solution)
+        game_input.display_board
       end
     end
   end
