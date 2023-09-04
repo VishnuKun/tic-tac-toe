@@ -39,10 +39,6 @@ describe Tic_Tac_Toe do
     end
   end
 
-  # Test each of your critical methods to make sure they function properly and handle edge cases.
-
-  # critical methods -
-
   describe '#place_mark' do
     subject(:game) { described_class.new }
     context 'when given message to mark on center' do
@@ -116,6 +112,4 @@ describe Tic_Tac_Toe do
       end
     end
   end
-
-  # Use mocks/doubles to isolate methods to make sure that they’re sending back the right outputs.
 end
