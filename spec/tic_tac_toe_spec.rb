@@ -49,7 +49,11 @@ describe Tic_Tac_Toe do
     subject(:game) { described_class.new }
     context 'when given message to mark on center' do 
       it 'should mark on boards center' do
-        expect(result).to eq('X')
+        position = 5
+        board = game.instance_variable_get(:@board)
+        center = board[4]
+        expect(center).to eq('X')
+        game.place_mark(position)
       end
     end
   end
