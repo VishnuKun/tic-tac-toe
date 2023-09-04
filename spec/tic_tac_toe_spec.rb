@@ -6,8 +6,6 @@ require './lib/tic_tac_toe'
 
 describe Tic_Tac_Toe do
   
-  # Start by writing tests to make sure players win when they should, e.g. when the board reads X X X across the top row, your #game_over method (or its equivalent) should trigger.
-  
   describe '#game_over?' do
     context 'when board reads X X X across the top row'
     subject(:game) { described_class.new }
@@ -20,7 +18,7 @@ describe Tic_Tac_Toe do
     context 'when board reads X X X diagonally(from left to right)' do
       subject(:game) { described_class.new }
       it 'should return true' do
-        board =       board = [['X', ' ', ' '], ['O', 'X', ' '], [' ', ' ', 'X']]
+        board =       board = ['X', ' ', ' ',   'O', 'X', ' ',    ' ', ' ', 'X']
         solution = game.game_over?(board)
         expect(solution).to be true
       end
@@ -29,7 +27,7 @@ describe Tic_Tac_Toe do
     context 'when board reads X X X across the middle column' do
       subject(:game) { described_class.new }
       it 'should return true' do
-        board =       board = [[' ', 'X', 'X'], ['O', 'X', ' '], [' ', 'X', ' ']]
+        board =       board = ['0', 'X', 'X',   'O', 'X', 'O',    ' ', 'X', ' ']
         solution = game.game_over?(board)
         expect(solution).to be true
       end
@@ -38,7 +36,7 @@ describe Tic_Tac_Toe do
     context 'when board is filled with no winning match' do
       subject(:game) { described_class.new }
       it 'should return false for draw' do
-        board =       board = [['O', 'X', 'X'], ['X', 'X', 'O'], ['O', 'O', 'X']]
+        board =       board = ['O', 'X', 'X',   'X', 'X', 'O',    'O', 'O', 'X']
         solution = game.game_over?(board)
         expect(solution).to be false
       end
@@ -50,11 +48,11 @@ describe Tic_Tac_Toe do
 
   # critical methods -
 
-  describe '#display_turn' do
-    context 'when given message to mark the board' do 
+  describe '#place_mark' do
+    context 'when given message to mark on center' do 
       subject(:game) { described_class.new }
-      it 'should mark position on board given by player' do
-
+      it 'should mark on boards center' do
+        expect(result).to eq('X')
       end
     end
   end
