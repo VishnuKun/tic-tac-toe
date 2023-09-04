@@ -2,6 +2,7 @@
 
 # tic-tac-toe
 class Tic_Tac_Toe
-    def initialize
-    end
+  def initialize
+    @board = Array.new(9) { |i| i + 1} 
+  end
 end
