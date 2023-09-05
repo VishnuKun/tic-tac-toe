@@ -4,7 +4,7 @@
 class Tic_Tac_Toe
   attr_accessor :board
   def initialize
-    @board = Array.new(9) { |i| i + 1} 
+    @board =  [1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
   # checks if the board has any winning combination
   def game_over?(board)
@@ -20,5 +20,9 @@ class Tic_Tac_Toe
     end
   
     false # No winning pattern found
+  end
+  # place's given mark at the given position on board
+  def place_mark(location, mark)
+    board[location - 1] = mark
   end
 end
