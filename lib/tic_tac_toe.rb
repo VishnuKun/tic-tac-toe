@@ -20,6 +20,66 @@ class Tic_Tac_Toe
     puts intro
   end
 
+  # starts the game
+  def play_game
+    # first provide intro
+    introduction
+    # display the board with a little explanation
+    puts "
+    This is the board where you will mark your letters. The positions of each square is provided as numbers between 1 and 9. 
+    For placing your letters provide the number of the square you wish to place the letters in.
+    "
+    display_board
+    # ask for two user's to give their names
+    puts "
+    Please enter your names first to play!
+    "
+    # player one
+    print "Please enter your name Player1('X') : "
+    player_one = gets.chomp
+    # player two
+    print "Please enter your name Player2('O') : "
+    player_two = gets.chomp
+    puts ""
+    # keep count of turns
+    turns = 1
+    # for setting player per each turn
+    current_player = nil
+    mark = nil
+    winner = nil
+    loser = nil
+    # keep asking for marking position to each player per turn
+    # and until the turns reaches maximum 9
+    while turns < 10 do
+      # then ask players 
+      turns.odd? ? ((current_player = player_one) && (mark = 'X')) : ((current_player = player_two) && (mark = 'O'))
+      print "#{mark} | #{current_player} please enter your position : "
+      # if position invalid then ask again
+      position = verify_position(gets.chomp)
+      # keep asking until a valid input is provided
+      while position.nil?
+        puts "Invalid input. Please try again."
+        print "#{mark} | #{current_player}, please enter your position: "
+        position = verify_position(gets.chomp)
+      end
+      # place the current player's mark into board as per position
+      place_mark(position, mark)
+      # display the board again
+      display_board
+      # check if any wins
+      result = game_over?(@board)
+      if result == true 
+        winner = current_player
+        loser = player_two
+        puts "Game Over!"
+        puts "Winner is #{winner}!"
+        puts "#{loser} loses."
+        break
+      end
+      turns += 1
+    end
+  end
+
   # checks if the board has any winning combination
   def game_over?(board)
     winning_combinations = [
@@ -56,6 +116,7 @@ class Tic_Tac_Toe
 
   # gets input from the user and verifies it
   def verify_position(input)
+    input = input.to_i
     input.is_a?(Integer) ? (input.between?(1, 9) ? input : nil) : nil
   end
 end
