@@ -39,6 +39,6 @@ class Tic_Tac_Toe
     ---------
     #{b[6]} | #{b[7]} | #{b[8]}
     "
-    return output
+    puts output
   end
 end
