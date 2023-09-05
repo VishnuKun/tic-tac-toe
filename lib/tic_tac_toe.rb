@@ -57,7 +57,7 @@ class Tic_Tac_Toe
       # if position invalid then ask again
       position = verify_position(gets.chomp)
       # keep asking until a valid input is provided
-      while position.nil?
+      while position.nil? || vacant?(position) == false
         puts "Invalid input. Please try again."
         print "#{mark} | #{current_player}, please enter your position: "
         position = verify_position(gets.chomp)
@@ -72,8 +72,7 @@ class Tic_Tac_Toe
         winner = current_player
         loser = player_two
         puts "Game Over!"
-        puts "Winner is #{winner}!"
-        puts "#{loser} loses."
+        puts "#{winner} wins!"
         break
       end
       turns += 1
@@ -118,5 +117,12 @@ class Tic_Tac_Toe
   def verify_position(input)
     input = input.to_i
     input.is_a?(Integer) ? (input.between?(1, 9) ? input : nil) : nil
+  end
+
+  # checks if the position is vacant or not
+  def vacant?(position)
+    b = @board
+    # position should contain number(between 1 and 9) to be considered vacant
+    b[position - 1].is_a?(Integer) ? true : false
   end
 end
