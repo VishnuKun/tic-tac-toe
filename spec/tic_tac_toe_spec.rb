@@ -55,27 +55,10 @@ describe Tic_Tac_Toe do
   describe '#display_board' do
     subject(:game_input) { described_class.new }
     context 'when given message' do
-      before do
-        solution = "
-        1 | 2 | 3
-        ---------
-        4 | 5 | 6
-        ---------
-        7 | 8 | 9
-        "
-        allow(game_input).to receive(:display_board).and_return(solution)
-      end
-
       it 'should display the board' do
-        solution = "
-        1 | 2 | 3
-        ---------
-        4 | 5 | 6
-        ---------
-        7 | 8 | 9
-        "
-        expect(game_input).to receive(:puts).with(solution)
-        game_input.display_board
+        expected_output =  "\n    1 | 2 | 3\n    ---------\n    4 | 5 | 6\n    ---------\n    7 | 8 | 9\n    "
+        result = game_input.display_board
+        expect(result).to eq(expected_output)
       end
     end
   end
