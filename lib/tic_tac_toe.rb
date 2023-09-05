@@ -8,6 +8,18 @@ class Tic_Tac_Toe
     @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
 
+  # welcomes players and explains game details
+  def introduction
+    intro = <<-Tic_Tac_Toe
+    Welcome to the Terminal Tic-Tac-Toe!
+    Tic-Tac-Toe is a two player game played on a 9-squared board.
+    The players take turns to choose a square to place their letter ('X' or 'O').
+    The goal is to get three of your letters in a row, either horizontally, vertically, or diagonally.
+    Let's start the game now!
+    Tic_Tac_Toe
+    puts intro
+  end
+
   # checks if the board has any winning combination
   def game_over?(board)
     winning_combinations = [
@@ -43,7 +55,7 @@ class Tic_Tac_Toe
   end
 
   # gets input from the user and verifies it
-  def verify_input(input)
+  def verify_position(input)
     input.is_a?(Integer) ? (input.between?(1, 9) ? input : nil) : nil
   end
 end

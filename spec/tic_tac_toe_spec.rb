@@ -77,12 +77,12 @@ describe Tic_Tac_Toe do
     end
   end
 
-  describe '#verify_input' do
+  describe '#verify_position' do
     subject(:game_verified) { described_class.new }
     context 'when given number between 1 and 9' do
       it 'returns input' do
         valid_input = 7
-        result = game_verified.verify_input(valid_input)
+        result = game_verified.verify_position(valid_input)
         expect(result).to eq(valid_input)
       end
     end
@@ -90,7 +90,7 @@ describe Tic_Tac_Toe do
     context 'when given invalid input' do
       it 'returns nil' do
         invalid_input = 'A'
-        result = game_verified.verify_input(invalid_input)
+        result = game_verified.verify_position(invalid_input)
         expect(result).to be nil
       end
     end
