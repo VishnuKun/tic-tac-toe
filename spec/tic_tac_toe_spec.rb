@@ -44,10 +44,10 @@ describe Tic_Tac_Toe do
     context 'when given message to mark on center' do
       it 'should mark on boards center' do
         position = 5
+        game.place_mark(position, 'X')
         board = game.instance_variable_get(:@board)
         center = board[4]
         expect(center).to eq('X')
-        game.place_mark(position)
       end
     end
   end
@@ -103,7 +103,7 @@ describe Tic_Tac_Toe do
         expect(result).to eq(valid_input)
       end
     end
-    
+
     context 'when given invalid input' do
       it 'returns nil' do
         invalid_input = 'A'
