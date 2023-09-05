@@ -50,7 +50,12 @@ class Tic_Tac_Toe
     loser = nil
     # keep asking for marking position to each player per turn
     # and until the turns reaches maximum 9
-    while turns < 10 do
+    while true do
+
+      if turns == 10 
+        puts "Game Over! It's a draw!"
+        break
+      end
       # then ask players 
       turns.odd? ? ((current_player = player_one) && (mark = 'X')) : ((current_player = player_two) && (mark = 'O'))
       print "#{mark} | #{current_player} please enter your position : "
