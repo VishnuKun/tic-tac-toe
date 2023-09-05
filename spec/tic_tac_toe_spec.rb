@@ -90,7 +90,7 @@ describe Tic_Tac_Toe do
     context 'when given invalid input' do
       it 'returns nil' do
         invalid_input = 'A'
-        result = game_verified.verify_turn(invalid_input)
+        result = game_verified.verify_input(invalid_input)
         expect(result).to be nil
       end
     end

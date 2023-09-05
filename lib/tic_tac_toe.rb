@@ -41,4 +41,9 @@ class Tic_Tac_Toe
     "
     puts output
   end
+
+  # gets input from the user and verifies it
+  def verify_input(input)
+    input.is_a?(Integer) ? (input.between?(1, 9) ? input : nil) : nil
+  end
 end
