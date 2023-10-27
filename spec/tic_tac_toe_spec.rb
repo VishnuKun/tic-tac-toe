@@ -2,6 +2,7 @@
 
 # spec/tic_tac_toe_spec.rb
 
+require 'spec_helper'
 require './lib/tic_tac_toe'
 
 describe Tic_Tac_Toe do
