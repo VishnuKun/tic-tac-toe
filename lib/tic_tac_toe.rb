@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # tic-tac-toe
-class Tic_Tac_Toe
+class TicTacToe
   attr_accessor :board
 
   def initialize
