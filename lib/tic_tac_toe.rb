@@ -10,13 +10,13 @@ class Tic_Tac_Toe
 
   # welcomes players and explains game details
   def introduction
-    intro = <<-Tic_Tac_Toe
+    intro = <<-TIC_TAC_TOE
     Welcome to the Terminal Tic-Tac-Toe!
     Tic-Tac-Toe is a two player game played on a 9-squared board.
     The players take turns to choose a square to place their letter ('X' or 'O').
     The goal is to get three of your letters in a row, either horizontally, vertically, or diagonally.
     Let's start the game now!
-    Tic_Tac_Toe
+    TIC_TAC_TOE
     puts intro
   end
 
@@ -24,7 +24,7 @@ class Tic_Tac_Toe
   def play_game
     introduction
     puts "
-    This is the board where you will mark your letters. The positions of each square is provided as numbers between 1 and 9. 
+    This is the board where you will mark your letters. The positions of each square is provided as numbers between 1 and 9.
     For placing your letters provide the number of the square you wish to place the letters in.
     "
     display_board
@@ -35,15 +35,15 @@ class Tic_Tac_Toe
     player_one = gets.chomp
     print "Please enter your name Player2('O') : "
     player_two = gets.chomp
-    puts ""
+    puts ''
     turns = 1
     current_player = nil
     mark = nil
     winner = nil
     loser = nil
-    while true do
+    while true
 
-      if turns == 10 
+      if turns == 10
         puts "Game Over! It's a draw!"
         break
       end
@@ -51,17 +51,17 @@ class Tic_Tac_Toe
       print "#{mark} | #{current_player} please enter your position : "
       position = verify_position(gets.chomp)
       while position.nil? || vacant?(position) == false
-        puts "Invalid input. Please try again."
+        puts 'Invalid input. Please try again.'
         print "#{mark} | #{current_player}, please enter your position: "
         position = verify_position(gets.chomp)
       end
       place_mark(position, mark)
       display_board
       result = game_over?(@board)
-      if result == true 
+      if result == true
         winner = current_player
         loser = player_two
-        puts "Game Over!"
+        puts 'Game Over!'
         puts "#{winner} wins!"
         break
       end
@@ -81,7 +81,7 @@ class Tic_Tac_Toe
       return true if marks.uniq.length == 1 && marks[0] != '' # Check if all marks are the same and not empty
     end
 
-    false 
+    false
   end
 
   # place's given mark at the given position on board
@@ -89,7 +89,7 @@ class Tic_Tac_Toe
     board[location - 1] = mark
   end
 
-  # displays the board 
+  # displays the board
   def display_board
     b = @board
     output = "
@@ -105,7 +105,9 @@ class Tic_Tac_Toe
   # gets input from the user and verifies it
   def verify_position(input)
     input = input.to_i
-    input.is_a?(Integer) ? (input.between?(1, 9) ? input : nil) : nil
+    return unless input.is_a?(Integer)
+
+    input.between?(1, 9) ? input : nil
   end
 
   # checks if the position is vacant or not
