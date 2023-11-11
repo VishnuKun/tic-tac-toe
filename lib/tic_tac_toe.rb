@@ -24,7 +24,8 @@ class TicTacToe
   def play_game
     introduction
     puts "
-    This is the board where you will mark your letters. The positions of each square is provided as numbers between 1 and 9.
+    This is the board where you will mark your letters.
+    The positions of each square is provided as numbers between 1 and 9.
     For placing your letters provide the number of the square you wish to place the letters in.
     "
     display_board
@@ -39,10 +40,7 @@ class TicTacToe
     turns = 1
     current_player = nil
     mark = nil
-    winner = nil
-    loser = nil
-    while true
-
+    loop do
       if turns == 10
         puts "Game Over! It's a draw!"
         break
@@ -60,7 +58,6 @@ class TicTacToe
       result = game_over?(@board)
       if result == true
         winner = current_player
-        loser = player_two
         puts 'Game Over!'
         puts "#{winner} wins!"
         break
